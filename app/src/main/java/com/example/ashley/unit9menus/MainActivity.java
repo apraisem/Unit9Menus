@@ -113,19 +113,35 @@ public class MainActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
-            // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
+        if (id == R.id.nav_add) {
+            Snackbar.make(getWindow().getDecorView(), "Add study mates not implemented yet", Snackbar.LENGTH_LONG)
+                    .setAction("Action", null).show();
+            return true;
 
-        } else if (id == R.id.nav_slideshow) {
+        } else if (id == R.id.nav_delete) {
+            Snackbar.make(getWindow().getDecorView(), "Delete study mates not implemented yet", Snackbar.LENGTH_LONG)
+                    .setAction("Action", null).show();
+            return true;
 
-        } else if (id == R.id.nav_manage) {
 
-        } else if (id == R.id.nav_share) {
+        } else if (id == R.id.nav_settings) {
+            Intent settingsIntent = new Intent(this, SettingsActivity.class);
+            startActivity(settingsIntent);
+            return true;
 
-        } else if (id == R.id.nav_send) {
+        } else if (id == R.id.nav_email) {
+            Intent emailIntent = new Intent(Intent.ACTION_SEND);
+            emailIntent.setType("*/*");
+            emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Hey Study Partner");
+            if (emailIntent.resolveActivity(getPackageManager()) != null)
+            {
+                startActivity(emailIntent);
+            }
+            return true;
 
-        }
+        } else if (id == R.id.nav_sms) {
+
+        } 
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
